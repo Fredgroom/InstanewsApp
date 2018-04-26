@@ -1,1 +1,29 @@
-body { background-color: brown;}
+ $breakpoint-tablet: 600px;
+ $breakpoint-desktop: 1000px;
+
+body { 
+    max-width: 600px;
+    background-color: black;
+    font-size: 16px;
+    font-family: Open Sans Light;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    color: #c2c2c2;
+}
+
+
+@media (min-width: $breakpoint-tablet) {
+  
+}
+
+@media (min-width: $breakpoint-desktop) {
+
+}

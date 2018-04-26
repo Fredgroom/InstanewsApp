@@ -3,10 +3,13 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var browserSync = require('browser-sync').create();
 var eslint = require('gulp-eslint');
-var sass = require("gulp-sass"),
- autoprefixer = require("gulp-autoprefixer"),
- cssnano = require("gulp-cssnano"),
- rename = require("gulp-rename");
+var sass = require("gulp-sass");
+// var image = require("gulp-image");
+var autoprefixer = require("gulp-autoprefixer");
+var cssnano = require("gulp-cssnano");
+var rename = require("gulp-rename");
+// var imageresize = require("gulp-image-resize");
+ 
 
 // This is a very basic Gulp task,
 // with a name and some code to run
@@ -43,6 +46,19 @@ gulp.task('sass', function() {
   .pipe(browserSync.stream());
 });
 
+// gulp.task('image', function (done) {
+//   return gulp
+//   .src('./images/*')
+//   .pipe(imageresize({
+//       width : 640,
+//       height : 640,
+//       crop : true,
+//       upscale : false
+//     }))
+//     .pipe(image())
+//     .pipe(gulp.dest('./build/img'));
+// });
+
 gulp.task('serve', function() {
    browserSync.init({
        server: {
@@ -52,6 +68,7 @@ gulp.task('serve', function() {
 
    gulp.watch('./js/*.js', gulp.series('js-watch'));
    gulp.watch('./sass/*.scss', gulp.series('sass'));
+  //  gulp.watch('./scss/*.scss', gulp.series('sass'));
 });
 
 gulp.task('default', gulp.parallel('serve'));
