@@ -19,7 +19,8 @@ gulp.task('scripts', function(done) {
        .pipe(eslint.failAfterError())
        .pipe(uglify()) // Call the uglify function on these files
        .pipe(rename({ extname: '.min.js' })) // Rename the uglified file
-       .pipe(gulp.dest('./build/js')); // Where do we put the result?
+       .pipe(gulp.dest('./build/js')) // Where do we put the result?
+       .pipe(browserSync.stream());
 });
 
 gulp.task('js-watch', gulp.series('scripts'), function(done) {
@@ -49,8 +50,8 @@ gulp.task('serve', function() {
        }
    });
 
-   gulp.watch('js/*.js', gulp.series('js-watch'));
-   gulp.watch('sass/*.scss', gulp.series('sass'));
+   gulp.watch('./js/*.js', gulp.series('js-watch'));
+   gulp.watch('./sass/*.scss', gulp.series('sass'));
 });
 
 gulp.task('default', gulp.parallel('serve'));
