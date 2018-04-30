@@ -16,7 +16,7 @@ var rename = require("gulp-rename");
 // when this task is called:
 gulp.task('scripts', function(done) {
    return gulp
-       .src(['./js/*.js', '!node_modules/**'])
+       .src(['./js/index.js', '!node_modules/**'])
        .pipe(eslint())
        .pipe(eslint.format())
        .pipe(eslint.failAfterError())
@@ -66,7 +66,7 @@ gulp.task('serve', function() {
        }
    });
 
-   gulp.watch('./js/*.js', gulp.series('js-watch'));
+   gulp.watch('./js/index.js', gulp.series('js-watch'));
    gulp.watch('./sass/*.scss', gulp.series('sass'));
   //  gulp.watch('./scss/*.scss', gulp.series('sass'));
 });

@@ -2,19 +2,27 @@
  $breakpoint-desktop: 1000px;
 
 body { 
-    height: 100%;
+    display: flex;
     max-width: 600px;
     background-color: black;
+    color: white;
     font-size: 16px;
     font-family: Open Sans Light;
+    flex-direction: column;
 }
 
 header {
+    display: flex;
     width: 100%;
     display: inline-flex;
     align-content: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.tile {
+    display: flex;
+    width: 25%;
 }
 
 footer {

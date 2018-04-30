@@ -10,38 +10,56 @@
   src="http://code.jquery.com/jquery-3.3.1.js"
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
+  
     
 </head>
 <body>
     <header>
+        <div class="logo">
         <img src="./assets/img/nyt-logo.svg" alt="nyt logo">
-        
+      </div>
+      </header>  
+      <section>
         <p>Choose a section:</p>
-        <select>
-            <option value="Briefing">Briefing</option>
-            <option value="World">World</option>
-            <option value="Arts">Arts</option>
-            <option value="US">US</option>
-            <option value="Climate">Climate</option>
-            <option value="NY Region">NY Region</option>
-            <option value="Health">Health</option>
-            <option value="Business Day">Business DAy</option>
-            <option value="Opinion">Opinion</option>
-            <option value="Technology">Technology</option>
-            <option value="Real Estate">Real Estate</option>
-            <option value="Style">Style</option>
-            <option value="Books">Travel</option>
-            <option value="Theater">Theater</option>
-            <option value="Food">Food</option>
-            <option value="Well">Well</option>
-            <option value="Science">Science</option>
+        <form method="GET">
+        <select class="select" type="select">
+              <option value="home">home</option>
+              <option value="arts">arts</option>
+              <option value="automobiles">automobiles</option>
+              <option value="books">books</option>
+              <option value="business">business</option>
+              <option value="fashion">fashion</option>
+              <option value="food">food</option>
+              <option value="health">health</option>
+              <option value="insider">insider</option>
+              <option value="magazine">magazine</option>
+              <option value="movies">movies</option>
+              <option value="national">national</option>
+              <option value="obituaries">obituaries</option>
+              <option value="opinion">opinion</option>
+              <option value="politics">politics</option>
+              <option value="realestate">realestate</option>
+              <option value="science">science</option>
+              <option value="sports">sports</option>
+              <option value="sundayreview">sundayreview</option>
+              <option value="technology">technology</option>
+              <option value="theater">theater</option>
+              <option value="tmagazine">tmagazine</option>
+              <option value="travel">travel</option>
+              <option value="upshot">upshot</option>
+              <option value="world">world</option>
           </select>
-    </header>
+          <img src="" alt="" class="loadGif">
+        </form>
+            
+        
+  </section
 
 
     <footer>
         <p>Copyrite 2016 INSTANEWS</p>
     </footer>
+    <script src="./build/js/jquery.min.js"></script>
     <script src="./build/js/index.min.js"></script>
 </body>
 </html>

@@ -33,12 +33,7 @@
     "gulp-sass": "^4.0.1",
     "gulp-uglify": "^3.0.0",
     "gulp-eslint": "^4.0.2"
-  //   "gulp-image": ""
-  //   "gulp-imageresize": ""
   },
   "dependencies": {
     "gulp-dest": "^0.2.3"
-    // "gulp-image": "^4.3.0"
-  //   "imagemagick": "^0.1.3"
-  }
-}
+}}
