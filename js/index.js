@@ -1,11 +1,8 @@
-var nytData,
-nytItems,
+var nytItems,
 nytUrl,
-endpoint,
 articleImageUrl,
 articleCaption,
 articleLink;
-var section = $(this).val();
 var loader = $('ajax-loader');
 var $stories = $('stories');
 
@@ -13,27 +10,27 @@ $(document).ready(function(){
 
   $(loader).hide();
   //When a selection is made make even t
-  $('.select').on('change', function(event){
 
+  $('.select').on('change', function(event){
+    var section = $(this).val();
     event.preventDefault();
 
     $stories.empty();
-    nytData, nytItems = '';
+    nytItems = '';
 
     var nytUrl = 'http://api.nytimes.com/svc/topstories/v2/' + section +  '.json?api-key=4a9e2e417a0b42359afada8fbb0249df';
 
-    alert(nytUrl);
-
-    });
-
-    $.ajax({
+$.ajax({
       url: nytUrl,
       method: 'GET',
       datatype: JSON 
     }).done(function(data) {
-        if(nytData.length !== 0) {
+      console.log(data.results);
+        if(data.length !== 0) {
           nytItems += '<ul>';
-          $.each(function(key, value){
+
+          $.each(data.results, function(key, value){
+            console.log(value);
             articleImageUrl = value.multimedia[4].url;
             articleCaption = value.abstract;
             articleLink = value.url;
@@ -49,12 +46,13 @@ $(document).ready(function(){
             nytItems += '</li>';
           });
           nytItems += '</ul>';
+          $(".success").append(nytItems);
         } else {
             nytItems += '<p class = "feedback">Sorry!</p>';
         }
       }) 
         .fail(function() {
-
+          $('fail').append("<p>Sorry this hasn't worked</p>");
       });
-    
+    });
 });
