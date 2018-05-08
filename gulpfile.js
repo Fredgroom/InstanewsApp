@@ -8,6 +8,7 @@ var sass = require("gulp-sass");
 var autoprefixer = require("gulp-autoprefixer");
 var cssnano = require("gulp-cssnano");
 var rename = require("gulp-rename");
+const babel = require('gulp-babel');
 // var imageresize = require("gulp-image-resize");
  
 
@@ -58,6 +59,14 @@ gulp.task('sass', function() {
 //     .pipe(image())
 //     .pipe(gulp.dest('./build/img'));
 // });
+
+gulp.task('default', () =>
+    gulp.src('src/app.js')
+        .pipe(babel({
+            presets: ['env']
+        }))
+        .pipe(gulp.dest('dist'))
+);
 
 gulp.task('serve', function() {
    browserSync.init({
