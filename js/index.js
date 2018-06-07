@@ -1,10 +1,10 @@
-var nytItems,
-nytUrl,
-articleImageUrl,
-articleCaption,
-articleLink;
-var loader = $('ajax-loader');
-var $stories = $('stories');
+let nytItems;
+let nytUrl;
+let articleImageUrl;
+let articleCaption;
+let articleLink;
+let loader = $('ajax-loader');
+let $stories = $('stories');
 
 $(document).ready(function(){
 
@@ -12,13 +12,13 @@ $(document).ready(function(){
   //When a selection is made make even t
 
   $('.select').on('change', function(event){
-    var section = $(this).val();
+    let section = $(this).val();
     event.preventDefault();
 
     $stories.empty();
     nytItems = '';
 
-    var nytUrl = 'http://api.nytimes.com/svc/topstories/v2/' + section +  '.json?api-key=4a9e2e417a0b42359afada8fbb0249df';
+    let nytUrl = `http://api.nytimes.com/svc/topstories/v2/ ${section} .json?api-key=4a9e2e417a0b42359afada8fbb0249df`;
 
       $.ajax({
             url: nytUrl,
@@ -34,15 +34,17 @@ $(document).ready(function(){
                   articleImageUrl = value.multimedia[4].url;
                   articleCaption = value.abstract;
                   articleLink = value.url;
-                  nytItems += '<li class=article-item>';
-                  nytItems += '<a href=#' + articleLink + '"target"="_blank">';
-                  nytItems += '<div class ="article" style="background-image:url(' + articleImageUrl +')">';
-                  nytItems += '<div class="story-meta>"'
-                  nytItems += '<p>' + (articleCaption || 'this story has no caption.') + '</p>';
-                  nytItems += '</div>';
-                  nytItems += '</div>';
-                  nytItems += '</a>';
-                  nytItems += '</li>';
+
+                  nytItems += `<li class=article-item>
+                                <a href=${articleLink}"target"="_blank">
+                                  <div class ="article" style="background-image:url(${articleImageUrl})">
+                                    <div class="story-meta">
+                                      <p> (${articleCaption || 'this story has no caption.'})
+                                      </p>
+                                    </div>
+                                  </div>
+                                </a>
+                              </li>`;
                 });
                 nytItems += '</ul>';
                 $(".success").append(nytItems);

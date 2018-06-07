@@ -1,29 +1,42 @@
  $breakpoint-tablet: 600px;
  $breakpoint-desktop: 1000px;
 
+ @font-face {
+	font-family: "Open Sans Light";
+	src: url("fonts/OpenSans-LightItalic.tff") format("tff"),
+		 url("fonts/OpenSans-Light.tff") format("tff"),
+		 url("fonts/OpenSans-LightBoldItalic.tff") format("tff"),
+		 url("fonts/OpenSans-LightBold.tff") format("tff"),
+}
+
 body { 
     display: flex;
     max-width: 600px;
+    height: 100vh;
     background-color: black;
     color: white;
     font-size: 16px;
     font-family: Open Sans Light;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 header {
     display: flex;
     justify-content: center;
-    align-items: space-between;
+    align-items: center;
     width: 100%;
+    img {
+        width: 350px;
+    }
 }
 
 .select {
-    width: 200px;
+    width: 100px;
     display: flex;
     justify-self: center;
+    background-color: white;
 }
 
 .success {
@@ -43,9 +56,8 @@ header {
 
 footer {
     display: flex;
-    align-items: flex-end;
-    
-    justify-content: center;
+    align-self: center;
+    justify-self: flex-end;
     color: #c2c2c2;
 }
 
