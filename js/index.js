@@ -1,51 +1,61 @@
-let nytItems;
-let nytUrl;
-let articleImageUrl;
-let articleCaption;
-let articleLink;
-let loader = $('ajax-loader');
-let $stories = $('stories');
 
 $(document).ready(function(){
 
+var nytItems;
+var nytUrl;
+var articleImageUrl;
+var articleCaption;
+var articleLink;
+var loader = $('ajax-loader');
+var $stories = $('stories');
+
   $(loader).hide();
   //When a selection is made make even t
+  $(loader)
 
   $('.select').on('change', function(event){
-    let section = $(this).val();
+    var section = $(this).val();
     event.preventDefault();
 
     $stories.empty();
     nytItems = '';
 
-    let nytUrl = `http://api.nytimes.com/svc/topstories/v2/ ${section} .json?api-key=4a9e2e417a0b42359afada8fbb0249df`;
+    var nytUrl = 'http://api.nytimes.com/svc/topstories/v2/' + section +  '.json?api-key=0751ffff01d7a70710354972fa0ad4a9:19:75124095';
 
       $.ajax({
             url: nytUrl,
             method: 'GET',
             datatype: JSON 
           }).done(function(data) {
-            console.log(data.results);
+            var nytData = (data.results);
+              
               if(data.length !== 0) {
                 nytItems += '<ul>';
 
                 $.each(data.results, function(key, value){
                   console.log(value);
-                  articleImageUrl = value.multimedia[4].url;
+                  articleImageUrl = value.multimedia[4].url; 
+                  if (articleImageUrl !== undefined) {
+                    articleImageUrl = value.multimedia[4].url} 
+                  else {
+                    articleImageUrl = 'http://www.placecage.com/200/300'};
+
                   articleCaption = value.abstract;
                   articleLink = value.url;
 
-                  nytItems += `<li class=article-item>
-                                <a href=${articleLink}"target"="_blank">
-                                  <div class ="article" style="background-image:url(${articleImageUrl})">
-                                    <div class="story-meta">
-                                      <p> (${articleCaption || 'this story has no caption.'})
-                                      </p>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>`;
+                  nytItems += '<li class="article-item">'; 
+                  nytItems += '<a href="' + articleLink + '" target="_blank">'; 
+                  nytItems += '<div class="article" style="background-image:url(' + articleImageUrl + ')">'; 
+                  nytItems += '<div class="story-meta">';
+                  nytItems += '<p>';
+                  nytItems += (  articleCaption   || "this story has no caption.");
+                  nytItems += '</p>'; 
+                  nytItems += '</div>'; 
+                  nytItems += '</div>'; 
+                  nytItems += '</a>'; 
+                  nytItems += '</li>';
                 });
+
                 nytItems += '</ul>';
                 $(".success").append(nytItems);
               } else {
